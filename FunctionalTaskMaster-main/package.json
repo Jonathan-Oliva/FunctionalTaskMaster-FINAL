@@ -4,7 +4,7 @@
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
-    "start": "tsx index.ts",
+    "start": "npm run build && node dist/index.js",
     "build": "tsc",
     "run:built": "node dist/index.js",
     "dev": "tsx watch index.ts",
