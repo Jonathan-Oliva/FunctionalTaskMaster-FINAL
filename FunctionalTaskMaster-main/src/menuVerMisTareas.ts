@@ -1,3 +1,9 @@
+// MÓDULO: FILTRO Y ORDENAMIENTO DE TAREAS
+// Menú intermedio que permite al usuario elegir:
+// → Qué tareas ver (por estado)
+// → Cómo ordenarlas
+// Luego delega la visualización a mostrarListado()
+
 import prompt from 'prompt';
 import { filtrarTareas, ordenarTareas } from './todoList.js';
 import { mostrarListado } from './mostrarListado.js';

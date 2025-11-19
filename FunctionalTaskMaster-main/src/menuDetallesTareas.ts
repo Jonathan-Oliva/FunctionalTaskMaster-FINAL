@@ -1,9 +1,13 @@
+// MÓDULO: EDITOR DETALLADO DE UNA TAREA ESPECÍFICA
+// Permite modificar estado, vencimiento, descripción o dificultad de una tarea por ID.
+// Usa inmutabilidad y funciones puras para actualizar el estado
+
 import prompt from 'prompt';
 import { actualizarTareaPorId } from './todoList.js';
 import { parseFecha } from './utils.js';
 import type{ Tarea, EstadoApp } from './types.js'; 
 
-
+// Función para mostrar el menú de detalles de una tarea y permitir su edición
 export const menuDetallesTarea = async (estado: EstadoApp, tareaId: string) => {
   let { tareas, guardar } = estado;
 
@@ -22,25 +26,25 @@ const { opcion } = await prompt.get(['opcion']);
   if (opcion === '0') return { tareas, guardar };
 
 let cambios: Partial<Tarea> = {};
-  if (opcion === '1') {
+  if (opcion === '1') { // Cambiar estado
     const { est } = await prompt.get(['Nuevo estado (P/E/T/C)']);
     const codigo = (est as string)?.trim().toUpperCase();
 
     const mapa: { [key: string]: any } = { P: 'Pendiente', E: 'En Curso', T: 'Terminada', C: 'Cancelada' };
     cambios.estado = codigo && mapa[codigo] || tarea.estado;
   }
-  if (opcion === '2') {
+  if (opcion === '2') { // Editar vencimiento
     const { fecha } = await prompt.get(['Nueva fecha (D-M-YYYY o 0 para eliminar)']);
     cambios.vencimiento = fecha === '0' ? null : parseFecha(fecha);
   }
-  if (opcion === '3') {
+  if (opcion === '3') { // Editar descripción
     const { desc } = await prompt.get(['Nueva descripción']);
     cambios.descripcion = (desc as string)?.substring(0, 500) || ''; // Fix
   }
-  if (opcion === '4') {
+  if (opcion === '4') { // Editar dificultad
     const { dif } = await prompt.get(['Dificultad (1/2/3)']);
     const d = parseInt(dif as string);
-    // Agregamos 'index signature' al mapa
+    // Agregamos 'index signature' al mapa 
     const mapa: { [key: number]: any } = { 1: 'Fácil', 2: 'Medio', 3: 'Difícil' };
     cambios.dificultad = mapa[d] || tarea.dificultad;
   }

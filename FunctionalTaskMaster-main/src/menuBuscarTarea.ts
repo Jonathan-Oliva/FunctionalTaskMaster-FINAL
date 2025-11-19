@@ -1,3 +1,7 @@
+// MÓDULO: BÚSQUEDA Y EDICIÓN DE TAREAS POR TÍTULO
+// Permite buscar tareas por texto y editar una sola tarea seleccionada.
+// Usa un "estado temporal" para reutilizar mostrarListado() sin afectar la lista completa.
+
 import prompt from 'prompt';
 import { buscarPorTitulo } from './todoList.ts';
 import { mostrarListado } from './mostrarListado.ts';
@@ -8,7 +12,7 @@ export const menuBuscarTarea = async (estado: EstadoApp): Promise<EstadoApp> => 
 
   console.clear();
   console.log('=== BUSCAR UNA TAREA ===\n');
-
+// Solicita el texto de búsqueda al usuario
   const { texto } = await prompt.get({
     properties: { texto: { description: 'Texto a buscar' } }
   }) as { texto: string };
@@ -21,7 +25,7 @@ export const menuBuscarTarea = async (estado: EstadoApp): Promise<EstadoApp> => 
 
   const resultados = buscarPorTitulo(tareas, texto.trim());
 
-  if (resultados.length === 0) {
+  if (resultados.length === 0) { // Valida si no hay resultados
     console.log('No se encontraron tareas.\n');
     await prompt.get(['enter']);
     return { tareas, guardar };

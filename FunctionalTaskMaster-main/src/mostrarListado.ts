@@ -1,3 +1,10 @@
+// MÓDULO: VISOR + EDITOR PRINCIPAL DE TAREAS
+// Recibe tareas filtradas/ordenadas, las muestra con estilo y permite:
+// → Seleccionar una tarea
+// → Ver detalles completos
+// → Editar cualquier campo
+// Todo con inmutabilidad, persistencia y UX profesional.
+
 import prompt from 'prompt';
 import { filtrarTareas, ordenarTareas, actualizarTareaPorId } from './todoList.ts';
 import { parseFecha } from './utils.ts';
@@ -65,7 +72,7 @@ export const mostrarListado = async (estado: EstadoApp, filtro: string, orden: s
     };
 
     mostrarDetalle();
-
+    
     while (true) {
       console.log('[1] Editar Título');
       console.log('[2] Editar Descripción');

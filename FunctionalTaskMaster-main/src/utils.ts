@@ -1,3 +1,5 @@
+// EN ESTE ARCHIVO DEFINIMOS FUNCIONES UTILITARIAS GENÉRICAS
+// → Funciones para parsear fechas y otros datos comunes en la aplicación.
 export const parseFecha = (fecha: any): Date | null => {
   if (!fecha || fecha === '0') return null;
   const partes = (fecha as string).split(/[-/]/);

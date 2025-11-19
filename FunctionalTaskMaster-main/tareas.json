@@ -1,11 +1,11 @@
 [
   {
     "id": "cf58756d-116c-4a41-aad7-ed3bc867c6af",
-    "titulo": "Aprender HTML",
+    "titulo": "html",
     "descripcion": "Primer paso en desarrollo web",
-    "estado": "Pendiente",
+    "estado": "Terminada",
     "creacion": "2025-11-03T18:20:59.336Z",
-    "ultimaEdicion": "2025-11-03T18:20:59.336Z",
+    "ultimaEdicion": "2025-11-19T00:37:09.403Z",
     "vencimiento": null,
     "dificultad": "Medio"
   },

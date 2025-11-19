@@ -1,3 +1,5 @@
+// EN ESTE ARCHIVO DEFINIMOS LOS TIPOS USADOS EN LA APLICACIÓN
+// → Tipos para tareas, estados y la estructura principal de la aplicación.
 export type Dificultad = 'Fácil' | 'Medio' | 'Difícil';
 
 export type Estado = 'Pendiente' | 'En Curso' | 'Terminada' | 'Cancelada';

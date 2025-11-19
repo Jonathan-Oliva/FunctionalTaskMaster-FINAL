@@ -1,10 +1,15 @@
-import prompt from 'prompt';
+//Importacion de algunas funciones necesarios para la a 
+import prompt from 'prompt'; // Librería para entrada/salida en consola
 import { menuVerMisTareas } from './menuVerMisTareas.ts';
 import { menuBuscarTarea } from './menuBuscarTarea.ts';
 import { crearTarea, cambiarEstado } from './tarea.ts';
 import { parseFecha } from './utils.ts';
 import { obtenerEstadisticas } from './todoList.ts'; 
 import type { Tarea, EstadoApp } from './types.ts';
+
+// MÓDULO: MENÚ PRINCIPAL INTERACTIVO EN CONSOLA
+// Este archivo contiene la lógica del menú principal de la aplicación.
+// Usa programación funcional, entrada/salida asíncrona y estado inmutable.
 
 prompt.start();
 
@@ -30,25 +35,25 @@ Tareas: ${stats.total} | Pendientes: ${stats.porEstado.Pendiente} | En curso: ${
       properties: { opcion: { required: true } }
     }) as { opcion: string };
 
-    if (opcion === '0') {
+    if (opcion === '0') { // Opcion para salir del menú
       await guardar(tareas);
       break;
     }
 
-    if (opcion === '1') {
+    if (opcion === '1') { // Opcion para ver las tareas
       const result = await menuVerMisTareas({ tareas, guardar });
       tareas = result.tareas;
       continue;
     }
 
-    if (opcion === '2') {
+    if (opcion === '2') { // Opcion para buscar una tarea
       const resultado = await menuBuscarTarea({ tareas, guardar });
       tareas = resultado.tareas;
       guardar = resultado.guardar;
       continue;
     }
 
-    if (opcion === '3') {
+    if (opcion === '3') { // Opcion para agregar una tarea con validar entradas
       console.log('=== AGREGAR TAREA ===\n');
 
       let titulo = '';
@@ -96,7 +101,7 @@ Tareas: ${stats.total} | Pendientes: ${stats.porEstado.Pendiente} | En curso: ${
       await prompt.get(['enter']);
     }
 
-    if (opcion === '4') {
+    if (opcion === '4') { // Opcion para eliminar una tarea
       if (tareas.length === 0) {
         console.log('No hay tareas para eliminar.\n');
         await prompt.get(['enter']);

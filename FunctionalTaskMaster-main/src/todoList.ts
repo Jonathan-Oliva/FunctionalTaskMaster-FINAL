@@ -1,5 +1,7 @@
+// EN ESTE ARCHIVO GESTIONAMOS LA LISTA DE TAREAS CON FILTROS Y BÚSQUEDAS
+// → Funciones puras para agregar, filtrar, ordenar y buscar tareas en la lista.
 import { crearTarea } from './tarea.js';
-import type { Tarea } from './types.js'; 
+import type { Tarea } from './types.ts'; 
 
 export const agregarTarea = (lista: Tarea[], titulo: string, desc = '', venc = null, dif = 1): Tarea[] => {
   const nueva = crearTarea(titulo, desc, venc, dif);
